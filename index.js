@@ -1,19 +1,9 @@
 const express = require("express");
 const axios = require("axios");
-var cors = require('cors');
-
+var cors = require("cors");
 const app = express();
 
 app.use(express.json({ limit: "1mb" }));
-/*app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  next();
-});*/
-
 app.use(cors());
 
 const getUniversities = async (req, res) => {
