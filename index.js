@@ -11,6 +11,10 @@ const getUniversities = async (req, res) => {
   res.send(response.data);
 };
 
+app.get("/", (req, res) => {
+  res.send("Server go brrr");
+});
+
 app.post("/api", async (req, res) => {
   getUniversities(req, res).catch((err) => {
     res.status(500).send(err);
