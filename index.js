@@ -1,23 +1,20 @@
 const express = require("express");
 const axios = require("axios");
-const bodyParser = require("body-parser");
-//var cors = require('cors');
+var cors = require('cors');
 
 const app = express();
 
 app.use(express.json({ limit: "1mb" }));
-app.use(function (req, res, next) {
+/*app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept"
   );
   next();
-});
+});*/
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-//app.use(cors());
+app.use(cors());
 
 const getUniversities = async (req, res) => {
   country = req.body.msg;
