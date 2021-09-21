@@ -1,6 +1,7 @@
 const express = require("express");
 const axios = require("axios");
 const app = express();
+
 app.use(express.json({ limit: "1mb" }));
 
 const getUniversities = async (req, res) => {
@@ -16,6 +17,8 @@ app.post("/api", async (req, res) => {
   });
 });
 
-app.listen(8080, () => {
-  console.log("server go brrr");
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+  console.log("server go brrr. Port" + PORT);
 });
