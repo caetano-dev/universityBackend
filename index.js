@@ -7,10 +7,17 @@ app.use(express.json({ limit: "1mb" }));
 app.use(cors());
 
 const getUniversities = async (req, res) => {
-  country = req.body.msg;
+  const country = req.body.msg;
+  const defaultCountry = "United States";
   const url = `http://universities.hipolabs.com/search?country=${country}`;
-  let response = await axios.get(url);
-  res.send(response.data);
+  const response = await axios.get(url);
+  if (response.data.length === 0) {
+    const url = `http://universities.hipolabs.com/search?country=${defaultCountry}`;
+    const response = await axios.get(url);
+    res.send(response.data);
+  } else {
+    res.send(response.data);
+  }
 };
 
 app.get("/", (req, res, next) => {
